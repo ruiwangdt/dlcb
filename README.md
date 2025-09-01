@@ -17,3 +17,35 @@
 - **Reproducible simulations** for rate curves and overhead studies
 
 ## 🧭 Repository Structure
+
+## 🚀 Quickstart
+
+## 📚 Cite This Work
+If you use this code, please cite the paper.
+```latex
+@article{wang2023distributed,
+  title={Distributed learning for uplink cell-free massive MIMO networks},
+  author={Wang, Rui and Dai, Weijie and Jiang, Yi},
+  journal={IEEE Transactions on Communications},
+  volume={71},
+  number={9},
+  pages={5595--5606},
+  year={2023},
+  publisher={IEEE}
+}
+```
+
+---
+
+## 🔑 License
+```text
+MIT License
+Copyright (c) 2025 Rui Wang
+```
+
+## 📬 Contact
+Rui Wang
+
+Homepage: https://ruiwangdt.github.io/
+
+Email: ruiwang18@fudan.edu.cn
