@@ -25,16 +25,16 @@ We propose a <ins>D</ins>istributed <ins>L</ins>earning scheme for uplink <ins>C
 - L Access Points (APs): Each with M receive antennas and Q outputs
 - 1 Central Processing Unit (CPU): With L×Q inputs and K outputs
 
-![Illustration of a cell-free massive MIMO network with geographically distributed APs connected to the CPU via the fronthaul links.](assets/cellfree.png)
+![Illustration of a cell-free massive MIMO network with geographically distributed APs connected to the CPU via the fronthaul links.](assets/cellfree.pdf)
 
 ### Quasi-Neural Network Representation
 The DLCB algorithm models the cell-free massive MIMO network as a quasi-neural network:
 
-![Quasi-neural network representation of an uplink cell-free massive MIMO network with K UEs, L APs, and one CPU.](assets/qnn_representation.png)
+![Quasi-neural network representation of an uplink cell-free massive MIMO network with K UEs, L APs, and one CPU.](assets/qnn_representation.pdf)
 
 ## DLCB Algorithm
 The DLCB operates in two phases:
-![Two-phase operation: forward propagation of the signals and backpropagation of the derivatives.](assets/dlcb_framework.png)
+![Two-phase operation: forward propagation of the signals and backpropagation of the derivatives.](assets/dlcb_framework.pdf)
 
 
 ## Getting Started
@@ -56,10 +56,10 @@ The main DLCB algorithm is implemented in ```trainBp_rxMMSE_rate_ort_ApQout_ap2c
 
 ## Performance Results
 ### Convergence Analysis
-![Average sum rate comparison: DLCB vs. Distributed-OTA \[28\]](assets/sim_cvg.png)
+![Average sum rate comparison: DLCB vs. Distributed-OTA \[28\]](assets/sim_cvg.pdf)
 
 ### Time-Varying Channel Performance
-![DLCB performance under time-varying channel conditions](assets/sim_timevarychan.png)
+![DLCB performance under time-varying channel conditions](assets/sim_timevarychan.pdf)
 
 ## Repository Structure
 ```
