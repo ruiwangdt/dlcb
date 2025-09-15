@@ -93,7 +93,3 @@ If you find our work and/or our code useful, please cite us via:
 }
 ```
 
-## References
-```
-[28] I. Atzeni, B. Gouda, and A. Tölli, “Distributed joint receiver design for uplink cell-free massive MIMO,” in Proc. IEEE Int. Conf. Commun. Workshops (ICC Workshops), Jun. 2020, pp. 1–6.
-```
