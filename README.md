@@ -43,11 +43,11 @@ The DLCB operates in two phases:
 #### Quick Start
 To reproduce the results from Figure 10 of our paper, simply run:
 ```
-fig10_code.m
+repro_fig10/fig10_code.m
 ```
 
 #### Core Implementation
-The main DLCB algorithm is implemented in ```trainBp_rxMMSE_rate_ort_ApQout_ap2cpu.m```, which supports the full generalized architecture:
+The main DLCB algorithm is implemented in ```repro_fig10/dlcb_alg.m```, which supports the full generalized architecture:
 ```
 % System Configuration:
 % - UEs:  K users, each with N transmit antennas and power constraint
@@ -70,10 +70,13 @@ Time-Varying Channel Performance:
 ## Repository Structure
 ```
 dlcb/
-├── assets/                                    # Figures and visualizations
-├── trainBp_rxMMSE_rate_ort_ApQout_ap2cpu.m    # Main DLCB algorithm
-├── uplink_sinr_rate_byEq_ApQout.m             # SINR and rate calculations
-├── fig10_code.m                               # Figure 10 reproduction
+├── assets/                             # Figures and visualizations
+├── repro_fig10/                        # Reproduction of Figure 10 (MATLAB code + .fig)
+│   ├── dlcb_alg.m                      # DLCB algorithm
+│   ├── fig10_code.m                    # Script for Figure 10
+│   ├── uplink_sinr_rate_byEq_ApQout.m  # Rate evaluation
+│   └── fig10.fig
+├── LICENSE
 └── README.md
 ```
 
