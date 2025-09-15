@@ -12,45 +12,41 @@ DOI: 10.1109/TCOMM.2023.3288578
 ## Overview
 We propose a <ins>D</ins>istributed <ins>L</ins>earning scheme for uplink <ins>C</ins>ell-free massive MIMO <ins>B</ins>eamforming (**DLCB**) using a quasi-neural network approach. The scheme achieves multi-AP cooperation without explicit channel state information (CSI) estimation, demonstrating significant improvements in communication efficiency and computational complexity compared to state-of-the-art approaches.
 
-## Key Features
+#### Key Features
 - **Reduced Fronthaul Load**: DLCB compresses vector signals to scalars at each AP before fronthaul transmission, achieving only 1/K of the fronthaul load compared to Distributed-OTA [28].
 - **CSI-Free Operation**: DLCB optimizes beamforming weights for UEs, APs, and the CPU using only pilot sequences and limited scalar feedback, eliminating the need for explicit CSI estimation or exchange.
 - **Fully Distributed Architecture**: Updates are performed through forward signal propagation and backward scalar derivative propagation. Each node operates using only local information and minimal feedback signals.
 - **Linear Computational Complexity**: DLCB requires only O(N) and O(M) multiplications for UEs and APs respectively, compared to O(N³) and O(M³) for competing methods.
 - **Flexible Optimization Objectives**: The framework supports various criteria including MMSE and Maximum Sum Rate (MSR) with simple derivative modifications while maintaining the same algorithmic structure.
 
-## System Architecture 
-### Network Model
+#### Network Model
 - K User Equipments (UEs): Each with N transmit antennas
 - L Access Points (APs): Each with M receive antennas and Q outputs
 - 1 Central Processing Unit (CPU): With L×Q inputs and K outputs
-
-Illustration of a cell-free massive MIMO network with geographically distributed APs connected to the CPU via the fronthaul links:
 <p align="center">
   <img src="assets/cellfree.png" alt="Illustration of a cell-free massive MIMO network with geographically distributed APs connected to the CPU via the fronthaul links." width="400"/>
 </p>
 
-### Quasi-Neural Network Representation
+#### DLCB Algorithm
 The DLCB algorithm models the cell-free massive MIMO network as a quasi-neural network:
 
 <p align="center">
   <img src="assets/qnn_representation.png" alt="Quasi-neural network representation of an uplink cell-free massive MIMO network with K UEs, L APs, and one CPU." width="800"/>
 </p>
 
-## DLCB Algorithm
 The DLCB operates in two phases:
 <p align="center">
   <img src="assets/dlcb_framework.png" alt="Two-phase operation: forward propagation of the signals and backpropagation of the derivatives." width="400"/>
 </p>
 
 ## Getting Started
-### Quick Start
+#### Quick Start
 To reproduce the results from Figure 10 of our paper, simply run:
 ```
 fig10_code.m
 ```
 
-### Core Implementation
+#### Core Implementation
 The main DLCB algorithm is implemented in ```trainBp_rxMMSE_rate_ort_ApQout_ap2cpu.m```, which supports the full generalized architecture:
 ```
 % System Configuration:
