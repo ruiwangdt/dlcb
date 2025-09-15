@@ -5,7 +5,7 @@
 <!-- | [Tweet](https://twitter.com/tailin_wu/status/1747259448635367756)  -->
 
 Official repo for the paper [Distributed Learning for Uplink Cell-Free Massive MIMO Networks](https://ieeexplore.ieee.org/document/10159406).<br />
-[Rui Wang](https://ruiwangdt.github.io/), Weijie Dai, [Yi Jiang](https://scholar.google.com/citations?user=D0YVu3oAAAAJ&hl=zh-CN)<br />
+Rui Wang, Weijie Dai, [Yi Jiang](https://scholar.google.com/citations?user=D0YVu3oAAAAJ&hl=zh-CN)<br />
 IEEE Transactions on Communications, vol. 71, no. 9, pp. 5595-5606, Sept. 2023<br />
 DOI: 10.1109/TCOMM.2023.3288578
 
