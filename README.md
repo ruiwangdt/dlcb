@@ -1,28 +1,80 @@
-# DLCB: Distributed Learning for uplink Cell-free massive MIMO Beamformin
+# DLCB: Distributed Learning for Uplink Cell-Free Massive MIMO Networks (IEEE TCOM 2023)
 
-**Official open-source reference for “Distributed Learning for Uplink Cell-Free Massive MIMO Networks,” IEEE Transactions on Communications, 2023**, DOI: 10.1109/TCOMM.2023.3288578.
+[Paper](https://ieeexplore.ieee.org/document/10159406) 
+<!-- | [Poster](https://github.com/AI4Science-WestlakeU/cindm/blob/main/assets/CinDM_poster.pdf)  -->
+<!-- | [Tweet](https://twitter.com/tailin_wu/status/1747259448635367756)  -->
+
+Official repo for the paper [Distributed Learning for Uplink Cell-Free Massive MIMO Networks](https://ieeexplore.ieee.org/document/10159406).<br />
+[Rui Wang](https://ruiwangdt.github.io/), Weijie Dai, [Yi Jiang](https://scholar.google.com/citations?user=D0YVu3oAAAAJ&hl=zh-CN)<br />
+IEEE Transactions on Communications, vol. 71, no. 9, pp. 5595-5606, Sept. 2023<br />
+DOI: 10.1109/TCOMM.2023.3288578
+
+## Overview
+We propose a <ins>D</ins>istributed <ins>L</ins>earning scheme for uplink <ins>C</ins>ell-free massive MIMO <ins>B</ins>eamforming (**DLCB**) using a quasi-neural network approach. The scheme achieves multi-AP cooperation without explicit channel state information (CSI) estimation, demonstrating significant improvements in communication efficiency and computational complexity compared to state-of-the-art approaches.
+
+## Key Features
+- **Reduced Fronthaul Load**: DLCB compresses vector signals to scalars at each AP before fronthaul transmission, achieving only 1/K of the fronthaul load compared to Distributed-OTA [28].
+- **CSI-Free Operation**: DLCB optimizes beamforming weights for UEs, APs, and the CPU using only pilot sequences and limited scalar feedback, eliminating the need for explicit CSI estimation or exchange.
+- **Fully Distributed Architecture**: Updates are performed through forward signal propagation and backward scalar derivative propagation. Each node operates using only local information and minimal feedback signals.
+- **Linear Computational Complexity**: DLCB requires only O(N) and O(M) multiplications for UEs and APs respectively, compared to O(N³) and O(M³) for competing methods.
+- **Flexible Optimization Objectives**: The framework supports various criteria including MMSE and Maximum Sum Rate (MSR) with simple derivative modifications while maintaining the same algorithmic structure.
+
+## System Architecture 
+### Network Model
+- K User Equipments (UEs): Each with N transmit antennas
+- L Access Points (APs): Each with M receive antennas and Q outputs
+- 1 Central Processing Unit (CPU): With L×Q inputs and K outputs
+
+![Illustration of a cell-free massive MIMO network with geographically distributed APs connected to the CPU via the fronthaul links.](assets/cellfree.png)
+
+### Quasi-Neural Network Representation
+The DLCB algorithm models the cell-free massive MIMO network as a quasi-neural network:
+
+![Quasi-neural network representation of an uplink cell-free massive MIMO network with K UEs, L APs, and one CPU.](assets/qnn_representation.png)
+
+## DLCB Algorithm
+The DLCB operates in two phases:
+![Two-phase operation: forward propagation of the signals and backpropagation of the derivatives.](assets/dlcb_framework.png)
 
 
-> DLCB models an uplink cell-free network as a **quasi-neural network** and borrows the idea of **backpropagation** algorithm to jointly optimize UE/AP/CPU weights **without explicit CSI**. Each AP compresses its vector observation into a **scalar** for the CPU, reducing fronthaul load, and the method supports **MMSE** and **MSR** objectives.  
-> See the paper for details.  
+## Getting Started
+### Quick Start
+To reproduce the results from Figure 10 of our paper, simply run:
+```
+fig10_code.m
+```
 
----
+### Core Implementation
+The main DLCB algorithm is implemented in ```trainBp_rxMMSE_rate_ort_ApQout_ap2cpu.m```, which supports the full generalized architecture:
+```
+% System Configuration:
+% - UEs:  K users, each with N transmit antennas and power constraint
+% - APs:  L access points, each with M receive antennas and Q outputs  
+% - CPU:  Single CPU with L*Q inputs and K outputs
+% - $T_{in}$: Number of fronthaul iterations per OTA training round
+```
 
-## ✨ Key Features
-- **No explicit CSI exchange** among APs; distributed optimization via BP
-- **Fronthaul-friendly**: APs forward scalars to CPU
-- **Objective-agnostic**: MMSE and MSR supported
-- **Algorithm 1 & 2 implementations** (multi-antenna UEs; single-antenna UEs)
-- **5G NR-aware** training schedule (TDD, minislot framing)
-- **Reproducible simulations** for rate curves and overhead studies
+## Performance Results
+### Convergence Analysis
+![Average sum rate comparison: DLCB vs. Distributed-OTA \[28\]](assets/sim_cvg.png)
 
-## 🧭 Repository Structure
+### Time-Varying Channel Performance
+![DLCB performance under time-varying channel conditions](assets/sim_timevarychan.png)
 
-## 🚀 Quickstart
+## Repository Structure
+```
+dlcb/
+├── assets/                                    # Figures and visualizations
+├── trainBp_rxMMSE_rate_ort_ApQout_ap2cpu.m    # Main DLCB algorithm
+├── uplink_sinr_rate_byEq_ApQout.m             # SINR and rate calculations
+├── fig10_code.m                               # Figure 10 reproduction
+└── README.md
+```
 
-## 📚 Cite This Work
-If you use this code, please cite the paper.
-```latex
+## Citation
+If you find our work and/or our code useful, please cite us via:
+
+```bibtex
 @article{wang2023distributed,
   title={Distributed learning for uplink cell-free massive MIMO networks},
   author={Wang, Rui and Dai, Weijie and Jiang, Yi},
@@ -35,17 +87,7 @@ If you use this code, please cite the paper.
 }
 ```
 
----
-
-## 🔑 License
-```text
-MIT License
-Copyright (c) 2025 Rui Wang
+## References
 ```
-
-## 📬 Contact
-Rui Wang
-
-Homepage: https://ruiwangdt.github.io/
-
-Email: ruiwang18@fudan.edu.cn
+[28] I. Atzeni, B. Gouda, and A. Tölli, “Distributed joint receiver design for uplink cell-free massive MIMO,” in Proc. IEEE Int. Conf. Commun. Workshops (ICC Workshops), Jun. 2020, pp. 1–6.
+```
